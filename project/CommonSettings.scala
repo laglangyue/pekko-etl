@@ -5,7 +5,7 @@ object CommonSettings {
   lazy val commonSettings = Seq(
     organization := "org.laglang.demo",
     version := Dependencies.version,
-    scalaVersion := Dependencies.scala3,
+    scalaVersion := Dependencies.scalaVersion,
     scalacOptions ++= CompileOptions.compileOptions,
     Test / parallelExecution := false,
     Test / logBuffered := false,
