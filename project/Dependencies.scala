@@ -24,5 +24,7 @@ object Dependencies {
 
   val jdbc = Seq(
     "org.apache.pekko" %% "pekko-connectors-slick" % "1.0.1",
+    "com.typesafe.slick" %% "slick" % "3.3.3",
+    "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3",
     mysql8Driver)
 }

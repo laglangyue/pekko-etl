@@ -30,7 +30,9 @@ lazy val example = (project in file("example"))
 
 lazy val connectors = (project in file("connectors"))
   .aggregate(jdbc)
+  .dependsOn(core)
   .settings(
     name := "connectors")
 
 lazy val jdbc = Modules.toConnector(Connector("connectors/jdbc", Dependencies.jdbc))
+  .dependsOn(core)
