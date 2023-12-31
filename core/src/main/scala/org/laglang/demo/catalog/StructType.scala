@@ -1,4 +1,4 @@
-package org.laglang.demo.table
+package org.laglang.demo.catalog
 
 import org.laglang.demo.util.CollectionUtils
 
@@ -72,7 +72,7 @@ case class StructType(fields: Array[StructField]) extends DataType with Seq[Stru
    */
   override def defaultSize: Int = fields.map(_.dataType.defaultSize).sum
 
-  override private[table] def asNullable: StructType = {
+  override private[catalog] def asNullable: StructType = {
     val newFields = fields.map { case StructField(name, dataType, _) =>
       StructField(name, dataType)
     }
@@ -83,11 +83,11 @@ case class StructType(fields: Array[StructField]) extends DataType with Seq[Stru
 
 object StructType extends AbstractDataType {
 
-  override private[sql] def defaultConcreteType: DataType = new StructType
+  override def defaultConcreteType: DataType = new StructType
 
-  override private[sql] def acceptsType(other: DataType): Boolean = {
+  override def acceptsType(other: DataType): Boolean = {
     other.isInstanceOf[StructType]
   }
 
-  override private[sql] def simpleString: String = "struct"
+  override def simpleString: String = "struct"
 }

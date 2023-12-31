@@ -8,7 +8,7 @@ import org.laglang.demo.connector.JdbcOption._
 
 import java.util.Properties
 import org.laglang.demo.context.Context.convert
-import org.laglang.demo.table.Row
+import org.laglang.demo.catalog.Row
 
 class TableReader {
   private val database = Database.forURL(Url, User, Password, new Properties(), Driver)

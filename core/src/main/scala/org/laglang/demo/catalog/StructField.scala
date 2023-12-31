@@ -1,4 +1,4 @@
-package org.laglang.demo.table
+package org.laglang.demo.catalog
 
 import org.laglang.demo.row.DataType
 

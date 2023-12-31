@@ -1,3 +1,3 @@
-package org.laglang.demo.table
+package org.laglang.demo.catalog
 
 case class Table(name: String, schema: StructType)
