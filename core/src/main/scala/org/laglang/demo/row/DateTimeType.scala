@@ -1,6 +1,6 @@
 package org.laglang.demo.row
 
-class DateType  extends DatetimeType {
+class DateType private() extends DatetimeType {
 
   /**
    * The default size of a value of the DateType is 4 bytes.
@@ -13,7 +13,7 @@ class DateType  extends DatetimeType {
 
 case object DateType extends DateType
 
-class TimeType extends DatetimeType {
+class TimeType private() extends DatetimeType {
 
   override def defaultSize: Int = 4
 

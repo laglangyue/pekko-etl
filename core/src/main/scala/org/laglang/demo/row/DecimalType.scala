@@ -12,7 +12,6 @@ import scala.annotation.tailrec
  *
  * The default precision and scale is (10, 0).
  */
-
 case class DecimalType(precision: Int, scale: Int) extends AtomicType {
   private val MAX_LONG_DIGITS = 18
   // default constructor for Java

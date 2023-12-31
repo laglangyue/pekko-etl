@@ -1,12 +1,14 @@
-package org.laglang.demo.row
+package org.laglang.demo.table
+
 import org.laglang.demo.row.ArrayImplicits.SparkArrayOps
 
 /**
- * A row implementation that uses an array of objects as the underlying storage.  Note that, while
+ * A row implementation that uses an array of objects as the underlying storage. Note that, while
  * the array is not copied, and thus could technically be mutated after creation, this is not
  * allowed.
  */
 class GenericRow(protected[sql] val values: Array[Any]) extends Row {
+
   /** No-arg constructor for serialization. */
   protected def this() = this(null)
 
@@ -21,8 +23,8 @@ class GenericRow(protected[sql] val values: Array[Any]) extends Row {
   override def copy(): GenericRow = this
 }
 
-class GenericRowWithSchema(values: Array[Any], override val schema: StructType)
-  extends GenericRow(values) {
+class GenericRowWithSchema(values: Array[Any], val schema: StructType)
+    extends GenericRow(values) {
 
   /** No-arg constructor for serialization. */
   protected def this() = this(null, null)

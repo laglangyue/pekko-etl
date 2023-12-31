@@ -52,7 +52,7 @@ class LongType private() extends IntegralType {
 case object LongType extends LongType
 
 
-class FloatType extends FractionalType {
+class FloatType private() extends FractionalType {
 
   /**
    * The default size of a value of the FloatType is 4 bytes.

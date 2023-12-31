@@ -1,4 +1,4 @@
-package org.laglang.demo.row
+package org.laglang.demo.table
 
 import scala.collection.immutable
 import scala.jdk.CollectionConverters._
@@ -106,7 +106,7 @@ trait Row extends Serializable {
    *   BooleanType -> java.lang.Boolean
    *   ByteType -> java.lang.Byte
    *   ShortType -> java.lang.Short
-   *   IntegerType -> java.lang.Integer
+   *   IntType -> java.lang.Integer
    *   LongType -> java.lang.Long
    *   FloatType -> java.lang.Float
    *   DoubleType -> java.lang.Double
@@ -135,7 +135,7 @@ trait Row extends Serializable {
    *   BooleanType -> java.lang.Boolean
    *   ByteType -> java.lang.Byte
    *   ShortType -> java.lang.Short
-   *   IntegerType -> java.lang.Integer
+   *   IntType -> java.lang.Integer
    *   LongType -> java.lang.Long
    *   FloatType -> java.lang.Float
    *   DoubleType -> java.lang.Double

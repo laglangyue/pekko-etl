@@ -3,7 +3,7 @@ package org.laglang.demo.row
 /**
  * A non-concrete data type, reserved for internal uses.
  */
-private abstract class AbstractDataType {
+abstract class AbstractDataType {
 
   /**
    * The default concrete type to use if we want to cast a null literal into this type.
@@ -29,7 +29,8 @@ private abstract class AbstractDataType {
 }
 
 /**
- * An internal type used to represent everything that is not null, UDTs, arrays, structs, and maps.
+ * An internal type used to represent everything that is not null, UDTs, arrays, structs, and
+ * maps.
  */
 protected abstract class AtomicType extends DataType
 
