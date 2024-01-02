@@ -5,7 +5,7 @@ package org.laglang.demo.catalog
  * the array is not copied, and thus could technically be mutated after creation, this is not
  * allowed.
  */
-class SimpleRow(val values: Array[Any], val schema: StructType = new StructType) extends Row {
+class SimpleRow(val values: Array[Any]) extends Row {
 
   /** No-arg constructor for serialization. */
   protected def this() = this(null)
@@ -20,6 +20,10 @@ class SimpleRow(val values: Array[Any], val schema: StructType = new StructType)
 
   override def copy(): SimpleRow = this
 
-  override def fieldIndex(name: String): Int = schema.fieldIndex(name)
+}
 
+object SimpleRow {
+  def apply(values: Array[Any]): SimpleRow = new SimpleRow(values)
+
+  def apply(any: Any*): SimpleRow = new SimpleRow(any.toArray)
 }
