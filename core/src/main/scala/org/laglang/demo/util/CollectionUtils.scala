@@ -12,7 +12,7 @@ object CollectionUtils {
     val keyIter = keys.iterator
     var idx = 0
     while (keyIter.hasNext) {
-      builder += (keyIter.next(), idx)
+      builder += ((keyIter.next(), idx))
       idx = idx + 1
     }
     builder.result()

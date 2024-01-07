@@ -1,19 +1,22 @@
 package org.laglang.demo
+
 import org.apache.commons.lang3.RandomStringUtils
 import org.apache.pekko.actor.typed.ActorSystem
 import org.apache.pekko.actor.typed.javadsl.Behaviors
-import org.apache.pekko.stream.scaladsl.{ Flow, Sink, Source }
+import org.apache.pekko.stream.scaladsl.{Flow, Sink, Source}
 import org.slf4j.LoggerFactory
 
-import scala.concurrent.duration.*
-import scala.concurrent.{ Await, ExecutionContext }
+import scala.concurrent.duration.{DurationInt, FiniteDuration}
+import scala.concurrent.{Await, ExecutionContext}
 
 object ConsoleToConsole {
   private def wait(duration: FiniteDuration): Unit = Thread.sleep(duration.toMillis)
+
   private final val log = LoggerFactory.getLogger(getClass)
 
   /**
    * define a source by iterator
+   *
    * @return
    */
   private def reader() = {
@@ -35,8 +38,8 @@ object ConsoleToConsole {
     implicit val actorSystem: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "console-to-console")
     implicit val executionContext: ExecutionContext = actorSystem.executionContext
     val task = reader()
-        .via(flow())
-        .runWith(writer())
+      .via(flow())
+      .runWith(writer())
     task.failed.foreach(exception => log.error("failure", exception))
     task.onComplete(_ => println("clean"))
     wait(10.seconds)

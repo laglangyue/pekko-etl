@@ -52,7 +52,7 @@ abstract class DataType extends AbstractDataType {
    */
   def existsRecursively(f: (DataType) => Boolean): Boolean = f(this)
 
-  override private[sql] def defaultConcreteType: DataType = this
+  override def defaultConcreteType: DataType = this
 
   /**
    * Returns true if `other` is an acceptable input type for a function that expects this,
@@ -66,7 +66,7 @@ abstract class DataType extends AbstractDataType {
    *   NumericType.acceptsType(DecimalType(10, 2))
    * }}}
    */
-  override private[sql] def acceptsType(other: DataType): Boolean = equalsIgnoreCaseAndNullability(other, this)
+  override def acceptsType(other: DataType): Boolean = equalsIgnoreCaseAndNullability(other, this)
 }
 
 object DataType {
@@ -82,7 +82,7 @@ object DataType {
 
       case (MapType(fromKey, fromValue, _), MapType(toKey, toValue, _)) =>
         equalsIgnoreCaseAndNullability(fromKey, toKey) &&
-        equalsIgnoreCaseAndNullability(fromValue, toValue)
+          equalsIgnoreCaseAndNullability(fromValue, toValue)
 
       case (fromDataType, toDataType) => fromDataType == toDataType
     }

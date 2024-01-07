@@ -38,6 +38,6 @@ abstract class NumericType extends AtomicType
 
 abstract class DatetimeType extends AtomicType
 
-private[sql] abstract class IntegralType extends NumericType
+abstract class IntegralType extends NumericType
 
-private[sql] abstract class FractionalType extends NumericType
+abstract class FractionalType extends NumericType

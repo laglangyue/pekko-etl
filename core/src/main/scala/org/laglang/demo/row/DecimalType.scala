@@ -28,7 +28,7 @@ case class DecimalType(precision: Int, scale: Int) extends AtomicType {
    * Returns whether this DecimalType is wider than `other`. If yes, it means `other`
    * can be casted into `this` safely without losing any precision or range.
    */
-  private[sql] def isWiderThan(other: DataType): Boolean = isWiderThanInternal(other)
+  private def isWiderThan(other: DataType): Boolean = isWiderThanInternal(other)
 
   @tailrec
   private def isWiderThanInternal(other: DataType): Boolean = other match {
@@ -75,16 +75,16 @@ object DecimalType extends AbstractDataType {
   private val SYSTEM_DEFAULT: DecimalType = DecimalType(MAX_PRECISION, DEFAULT_SCALE)
 
   // The decimal types compatible with other numeric types
-  private[sql] val BooleanDecimal = DecimalType(1, 0)
-  private[sql] val ByteDecimal = DecimalType(3, 0)
-  private[sql] val ShortDecimal = DecimalType(5, 0)
-  private[sql] val IntDecimal = DecimalType(10, 0)
-  private[sql] val LongDecimal = DecimalType(20, 0)
-  private[sql] val FloatDecimal = DecimalType(14, 7)
-  private[sql] val DoubleDecimal = DecimalType(30, 15)
-  private[sql] val BigIntDecimal = DecimalType(38, 0)
+  private val BooleanDecimal = DecimalType(1, 0)
+  private val ByteDecimal = DecimalType(3, 0)
+  private val ShortDecimal = DecimalType(5, 0)
+  private val IntDecimal = DecimalType(10, 0)
+  private val LongDecimal = DecimalType(20, 0)
+  private val FloatDecimal = DecimalType(14, 7)
+  private val DoubleDecimal = DecimalType(30, 15)
+  private val BigIntDecimal = DecimalType(38, 0)
 
-  private[sql] def forType(dataType: DataType): DecimalType = dataType match {
+  private def forType(dataType: DataType): DecimalType = dataType match {
     case ByteType   => ByteDecimal
     case ShortType  => ShortDecimal
     case IntType    => IntDecimal
@@ -93,15 +93,15 @@ object DecimalType extends AbstractDataType {
     case DoubleType => DoubleDecimal
   }
 
-  override private[sql] def defaultConcreteType: DataType = SYSTEM_DEFAULT
+  override  def defaultConcreteType: DataType = SYSTEM_DEFAULT
 
-  override private[sql] def acceptsType(other: DataType): Boolean = {
+  override  def acceptsType(other: DataType): Boolean = {
     other.isInstanceOf[DecimalType]
   }
 
-  override private[sql] def simpleString: String = "decimal"
+  override  def simpleString: String = "decimal"
 
-  private[sql] object Fixed {
+  private object Fixed {
     def unapply(t: DecimalType): Option[(Int, Int)] = Some((t.precision, t.scale))
   }
 

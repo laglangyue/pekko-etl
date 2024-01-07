@@ -6,9 +6,10 @@ object Dependencies {
   private val PekkoConnectorsVersion = "1.0.1"
 
   val version = "1.0.0"
-  val scalaVersion = "2.13.12"
+  val scalaVersion = "3.3.1"
   // pekko bash
   val pekko = List(
+    "org.apache.pekko" %% "pekko-actor" % PekkoVersion,
     "org.apache.pekko" %% "pekko-stream" % PekkoVersion,
     "org.apache.pekko" %% "pekko-actor-typed" % PekkoVersion,
     "org.apache.pekko" %% "pekko-slf4j" % PekkoVersion)
@@ -23,8 +24,6 @@ object Dependencies {
   val mysql8Driver = "mysql" % "mysql-connector-java" % "8.0.33"
 
   val jdbc = Seq(
-    "org.apache.pekko" %% "pekko-connectors-slick" % "1.0.1",
-    "com.typesafe.slick" %% "slick" % "3.3.3",
-    "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3",
+    "org.scalikejdbc" %% "scalikejdbc" % "4.1.0",
     mysql8Driver)
 }

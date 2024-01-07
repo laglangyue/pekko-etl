@@ -1,11 +1,11 @@
 package org.laglang.demo.catalog
 
+import org.laglang.demo.row.{AbstractDataType, DataType}
 import org.laglang.demo.util.CollectionUtils
 
 import scala.collection.Map
-import org.laglang.demo.row.{AbstractDataType, DataType}
 
-case class StructType(fields: Array[StructField]) extends DataType with Seq[StructField] {
+case class StructType(fields: Array[StructField]) extends DataType, Seq[StructField] {
 
   /** No-arg constructor for kryo. */
   def this() = this(Array.empty[StructField])
@@ -28,7 +28,7 @@ case class StructType(fields: Array[StructField]) extends DataType with Seq[Stru
    * Returns the index of a given field.
    *
    * @throws IllegalArgumentException
-   *   if a field with the given name does not exist
+   * if a field with the given name does not exist
    */
   def fieldIndex(name: String): Int = {
     nameToIndex.getOrElse(
@@ -54,7 +54,7 @@ case class StructType(fields: Array[StructField]) extends DataType with Seq[Stru
    * Extracts the [[StructField]] with the given name.
    *
    * @throws IllegalArgumentException
-   *   if a field with the given name does not exist
+   * if a field with the given name does not exist
    */
   def get(name: String): StructField = {
     nameToField.getOrElse(
@@ -72,13 +72,14 @@ case class StructType(fields: Array[StructField]) extends DataType with Seq[Stru
    */
   override def defaultSize: Int = fields.map(_.dataType.defaultSize).sum
 
-  override private[catalog] def asNullable: StructType = {
+  override def asNullable: StructType = {
     val newFields = fields.map { case StructField(name, dataType, _) =>
       StructField(name, dataType)
     }
-
     StructType(newFields)
   }
+
+  override def apply(i: Int): StructField = fields(i)
 }
 
 object StructType extends AbstractDataType {
@@ -90,4 +91,6 @@ object StructType extends AbstractDataType {
   }
 
   override def simpleString: String = "struct"
+
+
 }
