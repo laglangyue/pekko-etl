@@ -1,6 +1,6 @@
 package org.laglang.demo.pipline
 
-import org.laglang.demo.connector.internal.ConsoleConnector
+import org.laglang.demo.connector.demo.ConsoleConnector
 
 object WriterConnector {
 

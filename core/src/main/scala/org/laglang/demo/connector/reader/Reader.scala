@@ -1,4 +1,4 @@
-package org.laglang.demo.connector
+package org.laglang.demo.connector.reader
 
 import org.apache.pekko.NotUsed
 import org.apache.pekko.stream.scaladsl.Source
